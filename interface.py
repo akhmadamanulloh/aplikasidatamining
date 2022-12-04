@@ -64,11 +64,6 @@ with dataframe:
                     X = scaler.transform(X)
                     X
                     X.shape, y.shape
-            if prepros == "normal":
-                if prepoc:
-                dt['outlook'].unique()
-                dt_dum=pd.get_dummies(data=dt,columns=['temp','outlook','humidity','windy'])
-                dt_dum
     with modeling:
         X = dt_dum.drop('play',axis=1)
         y = dt_dum['play']
