@@ -61,9 +61,7 @@ with dataframe:
                     """## Normalisasi MinMax Scaler"""
                     scaler = MinMaxScaler()
                     scaler.fit(X)
-                    X = scaler.transform(X)
-                    X
-                    X.shape, y.shape
+
     with modeling:
         X = dt_dum.drop('play',axis=1)
         y = dt_dum['play']
