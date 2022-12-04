@@ -39,9 +39,36 @@ with dataframe:
                     * 1 : Iya
                     """)
         with preporcessingg:
-            dt['outlook'].unique()
-            dt_dum=pd.get_dummies(data=dt,columns=['temp','outlook','humidity','windy'])
-            dt_dum
+            st.subheader("Preprocessing")
+            prepros = st.radio(
+            "Silahkan pilih metode yang digunakan :",
+            (["Min Max Scaler","normal"]))
+            prepoc = st.button("Preprocessing")
+            if prepros == "Min Max Scaler":
+                if prepoc:
+                    df[["outlook","temp", "humidity", "windy"]].agg(['min','max'])
+                    df.play.value_counts()
+                    X = df.drop(columns=["play"],axis=1)
+                    y = df["play"]
+
+                    "### Normalize data transformasi"
+                    X
+                    X.shape, y.shape
+                    # le.inverse_transform(y)
+                    labels = pd.get_dummies(df.play).columns.values.tolist()
+                    "### Label"
+                    labels
+                    """## Normalisasi MinMax Scaler"""
+                    scaler = MinMaxScaler()
+                    scaler.fit(X)
+                    X = scaler.transform(X)
+                    X
+                    X.shape, y.shape
+            if prepros == "normal":
+                if prepoc:
+                dt['outlook'].unique()
+                dt_dum=pd.get_dummies(data=dt,columns=['temp','outlook','humidity','windy'])
+                dt_dum
     with modeling:
         X = dt_dum.drop('play',axis=1)
         y = dt_dum['play']
