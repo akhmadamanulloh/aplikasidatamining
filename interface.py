@@ -46,7 +46,7 @@ with dataframe:
             prepoc = st.button("Preprocessing")
             if prepros == "Min Max Scaler":
                 if prepoc:
-                    dt[["outlook","temp", "humidity", "windy"]]
+                    dt[["outlook","temp", "humidity", "windy"]].agg(['min','max'])
                     dt.play.value_counts()
                     X = dt.drop(columns=["play"],axis=1)
                     y = dt["play"]
