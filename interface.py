@@ -96,10 +96,10 @@ with dataframe:
         windy_True = 1 if windy == 'True' else 0
 
         data = np.array([[temp_cool,temp_hot,temp_mild,outlook_overcast,outlook_rainy,outlook_sunny,humidity_high,humidity_normal,windy_False,windy_True]])
-        model = st.selectbox('Pilih Model', ['MLPC', 'KNN', 'DTREE'])
-        if model == 'MLPC':
+        model = st.selectbox('Pilih Model', ['MLPClassifier', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
+        if model == 'MLPClassifier':
             y_imp = clf.predict(data)
-        elif model == 'KNN':
+        elif model == 'KNeighborsClassifier':
             y_imp = knn.predict(data)
         else:
             y_imp = classifier.predict(data)
