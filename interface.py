@@ -40,28 +40,9 @@ with dataframe:
                     """)
         with preporcessingg:
             st.subheader("Preprocessing")
-            prepros = st.radio(
-            "Silahkan pilih metode yang digunakan :",
-            (["Min Max Scaler","normal"]))
-            prepoc = st.button("Preprocessing")
-            if prepros == "Min Max Scaler":
-                if prepoc:
-                    dt[["outlook","temp", "humidity", "windy"]].agg(['min','max'])
-                    dt.play.value_counts()
-                    X = dt.drop(columns=["play"],axis=1)
-                    y = dt["play"]
-
-                    "### Normalize data transformasi"
-                    X
-                    X.shape, y.shape
-                    # le.inverse_transform(y)
-                    labels = pd.get_dummies(dt.play).columns.values.tolist()
-                    "### Label"
-                    labels
-                    """## Normalisasi MinMax Scaler"""
-                    scaler = MinMaxScaler()
-                    scaler.fit(X)
-
+            dt['outlook'].unique()
+            dt_dum=pd.get_dummies(data=dt,columns=['temp','outlook','humidity','windy'])
+            dt_dum
     with modeling:
         X = dt_dum.drop('play',axis=1)
         y = dt_dum['play']
