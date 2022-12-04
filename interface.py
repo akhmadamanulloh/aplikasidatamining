@@ -46,16 +46,16 @@ with dataframe:
             prepoc = st.button("Preprocessing")
             if prepros == "Min Max Scaler":
                 if prepoc:
-                    df[["outlook","temp", "humidity", "windy"]]
-                    df.play.value_counts()
-                    X = df.drop(columns=["play"],axis=1)
-                    y = df["play"]
+                    dt[["outlook","temp", "humidity", "windy"]]
+                    dt.play.value_counts()
+                    X = dt.drop(columns=["play"],axis=1)
+                    y = dt["play"]
 
                     "### Normalize data transformasi"
                     X
                     X.shape, y.shape
                     # le.inverse_transform(y)
-                    labels = pd.get_dummies(df.play).columns.values.tolist()
+                    labels = pd.get_dummies(dt.play).columns.values.tolist()
                     "### Label"
                     labels
                     """## Normalisasi MinMax Scaler"""
