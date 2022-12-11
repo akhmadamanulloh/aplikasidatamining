@@ -12,6 +12,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder 
+from sklearn.naive_bayes import GaussianNB
 
 # display
 # st.set_page_config(layout='wide')
