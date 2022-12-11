@@ -72,7 +72,7 @@ with preprocessing:
 
     st.subheader('Target Label')
     dumies = pd.get_dummies(data=df,columns=['play'])
-    dumies = np.array(dumies)
+    dumies
 
     labels = pd.DataFrame({
         'Positive' : [dumies[1]],
