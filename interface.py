@@ -72,11 +72,4 @@ with preprocessing:
 
     st.subheader('Target Label')
     dumies = pd.get_dummies(df.play).columns.values.tolist()
-    dumies = np.array(dumies)
-
-    labels = pd.DataFrame({
-        'Positive' : [dumies[1]],
-        'Negative' : [dumies[0]]
-    })
-
-    st.write(labels)
+    dumies 
