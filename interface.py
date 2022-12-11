@@ -70,7 +70,7 @@ with preprocessing:
     st.subheader('Hasil Normalisasi Data')
     st.write(scaled_features)
 
-   st.subheader('Target Label')
+    st.subheader('Target Label')
     dumies = pd.get_dummies(df_dum.play).columns.values.tolist()
     dumies = np.array(dumies)
 
