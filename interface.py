@@ -50,9 +50,9 @@ with dataframe:
         # split data
         X_train, X_test, y_train, y_test = train_test_split(
         X, y, train_size=0.5,random_state=1)
-        mlpc, knc, dtc = st.tabs(
-        ["MLPClassifier", "KNeighborsClassifier", "DecisionTreeClassifier"])
-        with mlpc:
+        clf, knc, dtc = st.tabs(
+        ["GaussianNB", "KNeighborsClassifier", "DecisionTreeClassifier"])
+        with clf:
             clf = GaussianNB(priors=None)
             clf.fit(X_train,y_train)
             y_pred_clf = clf.predict(X_test)
@@ -99,8 +99,8 @@ with dataframe:
         windy_True = 1 if windy == 'True' else 0
 
         data = np.array([[temp_cool,temp_hot,temp_mild,outlook_overcast,outlook_rainy,outlook_sunny,humidity_high,humidity_normal,windy_False,windy_True]])
-        model = st.selectbox('Pilih Model', ['MLPClassifier', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
-        if model == 'MLPClassifier':
+        model = st.selectbox('Pilih Model', ['GaussianNB', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
+        if model == 'GaussianNB':
             y_imp = clf.predict(data)
         elif model == 'KNeighborsClassifier':
             y_imp = knn.predict(data)
