@@ -54,6 +54,7 @@ with dataframe:
         ["MLPClassifier", "KNeighborsClassifier", "DecisionTreeClassifier"])
         with mlpc:
             clf = GaussianNB(priors=None)
+            clf.fit(X_train,y_train)
             y_pred_clf = clf.predict(X_test)
             akurasi_clf = accuracy_score(y_test, y_pred_clf)
             label_clf = pd.DataFrame(
