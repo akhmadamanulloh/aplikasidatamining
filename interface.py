@@ -52,7 +52,7 @@ with dataframe:
         mlpc, knc, dtc = st.tabs(
         ["MLPClassifier", "KNeighborsClassifier", "DecisionTreeClassifier"])
         with mlpc:
-            clf = MLPClassifier(random_state=1, max_iter=300).fit(X_train, y_train)
+            clf = GaussianNB(priors=None)
             y_pred_clf = clf.predict(X_test)
             akurasi_clf = accuracy_score(y_test, y_pred_clf)
             label_clf = pd.DataFrame(
