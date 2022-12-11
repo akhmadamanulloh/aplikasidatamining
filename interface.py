@@ -16,7 +16,7 @@ from sklearn.naive_bayes import GaussianNB
 
 # display
 # st.set_page_config(layout='wide')
-st.set_page_config(page_title="weather play tennis")
+st.set_page_config(page_title="Weather Play Tennis")
 
 st.title("weather play tennis")
 deskripsi,dataframe, preporcessing, modeling, implementation = st.tabs(
@@ -88,7 +88,7 @@ with dataframe:
     with modeling:
         # split data
         X_train, X_test, y_train, y_test = train_test_split(
-        X, y, train_size=0.5,random_state=1)
+        X, y, train_size=0.4,random_state=1)
         clf, knc, dtc = st.tabs(
         ["GaussianNB", "KNeighborsClassifier", "DecisionTreeClassifier"])
         with clf:
