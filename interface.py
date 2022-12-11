@@ -72,7 +72,6 @@ with preprocessing:
 
     st.subheader('Target Label')
     dumies = pd.get_dummies(data=df,columns=['play']).columns.values.tolist()
-    dumies = np.array(dumies)
 
     labels = pd.DataFrame({
         'main' : [dumies[1]],
