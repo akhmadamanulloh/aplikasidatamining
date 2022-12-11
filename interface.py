@@ -18,8 +18,7 @@ from sklearn.naive_bayes import GaussianNB
 # st.set_page_config(layout='wide')
 st.set_page_config(page_title="weather play tennis")
 
-st.title("UAS PENDAT")
-st.write("By: Akhmad Amanulloh (20041110099)")
+st.title("weather play tennis")
 deskripsi,dataframe, preporcessing, modeling, implementation = st.tabs(
     ["Deskripsi","Data", "Prepocessing", "Modeling", "Implementation"])
 with deskripsi:
@@ -33,18 +32,21 @@ with deskripsi:
     st.write("sunny=cerah")
     st.write("overcast=mendung")
     st.write("rainy=hujan")
-    st.write("2. gender (Jenis kelamin) : Kategorikal")
-    st.write("3. height_cm (Tinggi Badan) : Numerik")
-    st.write("4. weight_kg (Berat badan) : Numerik")
-    st.write("5. body_fat (Lemak tubuh) : Numerik")
-    st.write("6. diastolic (Tekanan darah diastolic) : Numerik")
-    st.write("7. systolic (Tekanan darah systolic) : Numerik")
-    st.write("8. gripForce (Kekuatan cengkrama) : Numerik")
-    st.write("9. sit_and_binding_fowrard (Jarak sitting forward binding : Numerik")
-    st.write("10. sit_ups_count (Jumlah sit up) : Numerik")
-    st.write("11. broad_jumps_cm (Nilai lompat jauh  : Numerik")
-    st.write("Sumber dataset https://www.kaggle.com/datasets/kukuroo3/body-performance-data")
-    st.write("Link github https://github.com/alaziz31/interface")
+    st.write("2. temp (suhu) : Kategorikal")
+    st.write("hoot=panas")
+    st.write("mild=normal")
+    st.write("cool=dingin")
+    st.write("3. humidity (kelembapan) : Kategorikal")
+    st.write("high=tinggi")
+    st.write("normal=normal")
+    st.write("4. windy (berangin) : Kategorikal")
+    st.write("true=benar")
+    st.write("false=salah")
+    st.write("5. play (main) : Kategorikal")
+    st.write("yes=iya")
+    st.write("no=tidak")
+    st.write("Sumber dataset https://www.kaggle.com/datasets/pranavpandey2511/tennis-weather")
+    st.write("Link github https://github.com/akhmadamanulloh/aplikasidatamining/")
 with dataframe:
     url = "https://www.kaggle.com/datasets/pranavpandey2511/tennis-weather"
     st.markdown(
