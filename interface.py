@@ -54,7 +54,7 @@ with preprocessing:
     - max = nilai maksimum semua data asli
     """)
     #Mendefinisikan Varible X dan Y
-    df_dum=pd.get_dummies(data=df,columns=['temp','outlook','humidity','windy'])
+    df_dum=pd.get_dummies(data=df,columns=['temp','outlook','humidity','windy','play'])
     df_dum
     X = df_dum.drop(columns=['play'])
     y = df_dum['play'].values
@@ -71,8 +71,8 @@ with preprocessing:
     st.write(scaled_features)
 
     st.subheader('Target Label')
-    dumies = pd.get_dummies(data=df,columns=['play'])
-    dumies
+    dumies = pd.get_dummies(df.play).columns.values.tolist()
+    dumies = np.array(dumies)
 
     labels = pd.DataFrame({
         'Positive' : [dumies[1]],
