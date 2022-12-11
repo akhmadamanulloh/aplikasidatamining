@@ -70,12 +70,13 @@ with preprocessing:
     st.subheader('Hasil Normalisasi Data')
     st.write(scaled_features)
 
-    st.subheader('Target Label')
-    dumies = pd.get_dummies(data=df,columns=['play']).columns.values.tolist()
+   st.subheader('Target Label')
+    dumies = pd.get_dummies(df_dum.play).columns.values.tolist()
+    dumies = np.array(dumies)
 
     labels = pd.DataFrame({
-        'main' : [dumies[1]],
-        'tidak bermain' : [dumies[0]]
+        'Positive' : [dumies[1]],
+        'Negative' : [dumies[0]]
     })
 
     st.write(labels)
