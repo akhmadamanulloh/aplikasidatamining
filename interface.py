@@ -41,12 +41,27 @@ with dataframe:
                     """)
         with preporcessingg:
             st.subheader("Preprocessing")
-            dt['outlook'].unique()
+            #Mendefinisikan Varible X dan Y
             dt_dum=pd.get_dummies(data=dt,columns=['temp','outlook','humidity','windy'])
             dt_dum
+            X = dt_dum.drop(columns=['play'])
+            y = dt_dum['play'].values
+            dt_min = X.min()
+            dt_max = X.max()
+
+            #NORMALISASI NILAI X
+            scaler = MinMaxScaler()
+            scaled = scaler.fit_transform(X)
+            features_names = X.columns.copy()
+            scaled_features = pd.DataFrame(scaled, columns=features_names)
+
+            st.subheader('Hasil Normalisasi Data')
+            st.write(scaled_features)
+
+            st.subheader('Target Label')
+            dumies = pd.get_dummies(dt.play).columns.values.tolist()
+            dumies 
     with modeling:
-        X = dt_dum.drop('play',axis=1)
-        y = dt_dum['play']
         # split data
         X_train, X_test, y_train, y_test = train_test_split(
         X, y, train_size=0.5,random_state=1)
