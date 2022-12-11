@@ -27,7 +27,7 @@ with deskripsi:
     st.write("Nama : Akhmad Amanulloh | NIM : 200411100099 | Kelas : Penambangan Data A")
     st.write("")
     st.write("Dataset berisi tentang cuaca yang tepat untuk bermain tennis.")
-    st.write("Aplikasi ini digunakan untuk cuaca yang tepat untuk bermain tennis.").")
+    st.write("Aplikasi ini digunakan untuk cuaca yang tepat untuk bermain tennis.")
     st.write("Fitur yang digunakan :")
     st.write("1. Outlook (Pandangan) : Kategorikal")
     st.write("sunny=cerah")
