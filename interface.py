@@ -84,7 +84,7 @@ with dataframe:
 
             st.subheader('Target Label')
             dumies = pd.get_dummies(dt.play).columns.values.tolist()
-            dumies 
+            dumies
     with modeling:
         X = dt_dum.drop('play',axis=1)
         y = dt_dum['play']
