@@ -103,7 +103,7 @@ with dataframe:
             st.success(f'akurasi terhadap data test = {akurasi_clf}')
             st.dataframe(label_clf)
         with knc:
-            knn = KNeighborsClassifier(n_neighbors = 10)
+            knn = KNeighborsClassifier(n_neighbors = 5)
             knn.fit(X_train,y_train)
             y_pred_knn = knn.predict(X_test)
             akurasi_knn = accuracy_score(y_test, y_pred_knn)
