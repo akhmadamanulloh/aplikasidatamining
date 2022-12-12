@@ -118,32 +118,32 @@ with dataframe:
             data={'Label Test': y_test, 'Label Predict': y_pred_d3}).reset_index()
             st.success(f'akurasi terhadap data test = {akurasi_d3}')
             st.dataframe(label_d3)
-    with implementation:
-        tema = st.selectbox('Suhu', ['cool', 'hot', 'mild'])
-        temp_cool = 1 if tema == 'cool' else 0
-        temp_hot = 1 if tema == 'hot' else 0
-        temp_mild = 1 if tema == 'mild' else 0
+        with implementation:
+            tema = st.selectbox('Temperatur', ['cool', 'hot', 'mild'])
+            temp_cool = 1 if tema == 'cool' else 0
+            temp_hot = 1 if tema == 'hot' else 0
+            temp_mild = 1 if tema == 'mild' else 0
 
-        outlook = st.selectbox('outlook', ['overcast', 'rainy', 'sunny'])
-        outlook_overcast = 1 if outlook == 'overcast' else 0
-        outlook_rainy = 1 if outlook == 'rainy' else 0
-        outlook_sunny = 1 if outlook == 'sunny' else 0
+            outlook = st.selectbox('outlook', ['overcast', 'rainy', 'sunny'])
+            outlook_overcast = 1 if outlook == 'overcast' else 0
+            outlook_rainy = 1 if outlook == 'rainy' else 0
+            outlook_sunny = 1 if outlook == 'sunny' else 0
 
-        humidity = st.selectbox('humidity', ['high', 'normal'])
-        humidity_high = 1 if humidity == 'high' else 0
-        humidity_normal = 1 if humidity == 'normal' else 0
+            humidity = st.selectbox('humidity', ['high', 'normal'])
+            humidity_high = 1 if humidity == 'high' else 0
+            humidity_normal = 1 if humidity == 'normal' else 0
 
-        windy = st.selectbox('windy', ['False', 'True'])
-        windy_False = 1 if windy == 'False' else 0
-        windy_True = 1 if windy == 'True' else 0
+            windy = st.selectbox('windy', ['False', 'True'])
+            windy_False = 1 if windy == 'False' else 0
+            windy_True = 1 if windy == 'True' else 0
 
-        data = np.array([[temp_cool,temp_hot,temp_mild,outlook_overcast,outlook_rainy,outlook_sunny,humidity_high,humidity_normal,windy_False,windy_True]])
-        model = st.selectbox('Pilih Model', ['GaussianNB', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
-        if model == 'GaussianNB':
-            y_imp = clf.predict(data)
-        elif model == 'KNeighborsClassifier':
-            y_imp = knn.predict(data)
-        else:
-            y_imp = classifier.predict(data)
-        st.success(f'Model yang dipilih = {model}')
-        st.success(f'Data Predict = {y_imp}')
+            data = np.array([[temp_cool,temp_hot,temp_mild,outlook_overcast,outlook_rainy,outlook_sunny,humidity_high,humidity_normal,windy_False,windy_True]])
+            model = st.selectbox('Pilih Model', ['GaussianNB', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
+            if model == 'GaussianNB':
+                y_imp = clf.predict(data)
+            elif model == 'KNeighborsClassifier':
+                y_imp = knn.predict(data)
+            else:
+                y_imp = classifier.predict(data)
+            st.success(f'Model yang dipilih = {model}')
+            st.success(f'Data Predict = {y_imp}')
