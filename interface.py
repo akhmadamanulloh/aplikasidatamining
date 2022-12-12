@@ -85,67 +85,67 @@ with dataframe:
             st.subheader('Target Label')
             dumies = pd.get_dummies(dt.play).columns.values.tolist()
             dumies 
-    with modeling:
-        # split data
-        X_train, X_test, y_train, y_test = train_test_split(
-        X, y, train_size=0.45,random_state=1)
-        clf, knc, dtc = st.tabs(
-        ["GaussianNB", "KNeighborsClassifier", "DecisionTreeClassifier"])
-        with clf:
-            clf = GaussianNB(priors=None)
-            clf.fit(X_train,y_train)
-            y_pred_clf = clf.predict(X_test)
-            akurasi_clf = accuracy_score(y_test, y_pred_clf)
-            label_clf = pd.DataFrame(
-            data={'Label Test': y_test, 'Label Predict': y_pred_clf}).reset_index()
-            st.success(f'akurasi terhadap data test = {akurasi_clf}')
-            st.dataframe(label_clf)
-        with knc:
-            knn = KNeighborsClassifier(n_neighbors = 10)
-            knn.fit(X_train,y_train)
-            y_pred_knn = knn.predict(X_test)
-            akurasi_knn = accuracy_score(y_test, y_pred_knn)
-            label_knn = pd.DataFrame(
-            data={'Label Test': y_test, 'Label Predict': y_pred_knn}).reset_index()
-            st.success(f'akurasi terhadap data test = {akurasi_knn}')
-            st.dataframe(label_knn)
-        with dtc:
-            classifier=DecisionTreeClassifier(criterion='gini')
-            classifier.fit(X_train,y_train)
-            y_pred_d3 = classifier.predict(X_test)
-            akurasi_d3 = accuracy_score(y_test, y_pred_d3)
-            label_d3 = pd.DataFrame(
-            data={'Label Test': y_test, 'Label Predict': y_pred_d3}).reset_index()
-            st.success(f'akurasi terhadap data test = {akurasi_d3}')
-            st.dataframe(label_d3)
-    with implementation:
-        tema = st.selectbox('Temperatur', ['cool', 'hot', 'mild'])
-        temp_cool = 1 if tema == 'cool' else 0
-        temp_hot = 1 if tema == 'hot' else 0
-        temp_mild = 1 if tema == 'mild' else 0
+        with modeling:
+            # split data
+            X_train, X_test, y_train, y_test = train_test_split(
+            X, y, train_size=0.45,random_state=1)
+            clf, knc, dtc = st.tabs(
+            ["GaussianNB", "KNeighborsClassifier", "DecisionTreeClassifier"])
+            with clf:
+                clf = GaussianNB(priors=None)
+                clf.fit(X_train,y_train)
+                y_pred_clf = clf.predict(X_test)
+                akurasi_clf = accuracy_score(y_test, y_pred_clf)
+                label_clf = pd.DataFrame(
+                data={'Label Test': y_test, 'Label Predict': y_pred_clf}).reset_index()
+                st.success(f'akurasi terhadap data test = {akurasi_clf}')
+                st.dataframe(label_clf)
+            with knc:
+                knn = KNeighborsClassifier(n_neighbors = 10)
+                knn.fit(X_train,y_train)
+                y_pred_knn = knn.predict(X_test)
+                akurasi_knn = accuracy_score(y_test, y_pred_knn)
+                label_knn = pd.DataFrame(
+                data={'Label Test': y_test, 'Label Predict': y_pred_knn}).reset_index()
+                st.success(f'akurasi terhadap data test = {akurasi_knn}')
+                st.dataframe(label_knn)
+            with dtc:
+                classifier=DecisionTreeClassifier(criterion='gini')
+                classifier.fit(X_train,y_train)
+                y_pred_d3 = classifier.predict(X_test)
+                akurasi_d3 = accuracy_score(y_test, y_pred_d3)
+                label_d3 = pd.DataFrame(
+                data={'Label Test': y_test, 'Label Predict': y_pred_d3}).reset_index()
+                st.success(f'akurasi terhadap data test = {akurasi_d3}')
+                st.dataframe(label_d3)
+        with implementation:
+            tema = st.selectbox('Temperatur', ['cool', 'hot', 'mild'])
+            temp_cool = 1 if tema == 'cool' else 0
+            temp_hot = 1 if tema == 'hot' else 0
+            temp_mild = 1 if tema == 'mild' else 0
 
-        outlook = st.selectbox('outlook', ['overcast', 'rainy', 'sunny'])
-        outlook_overcast = 1 if outlook == 'overcast' else 0
-        outlook_rainy = 1 if outlook == 'rainy' else 0
-        outlook_sunny = 1 if outlook == 'sunny' else 0
+            outlook = st.selectbox('outlook', ['overcast', 'rainy', 'sunny'])
+            outlook_overcast = 1 if outlook == 'overcast' else 0
+            outlook_rainy = 1 if outlook == 'rainy' else 0
+            outlook_sunny = 1 if outlook == 'sunny' else 0
 
-        humidity = st.selectbox('humidity', ['high', 'normal'])
-        humidity_high = 1 if humidity == 'high' else 0
-        humidity_normal = 1 if humidity == 'normal' else 0
+            humidity = st.selectbox('humidity', ['high', 'normal'])
+            humidity_high = 1 if humidity == 'high' else 0
+            humidity_normal = 1 if humidity == 'normal' else 0
 
-        windy = st.selectbox('windy', ['False', 'True'])
-        windy_False = 1 if windy == 'False' else 0
-        windy_True = 1 if windy == 'True' else 0
+            windy = st.selectbox('windy', ['False', 'True'])
+            windy_False = 1 if windy == 'False' else 0
+            windy_True = 1 if windy == 'True' else 0
 
-        data = np.array([[temp_cool,temp_hot,temp_mild,outlook_overcast,outlook_rainy,outlook_sunny,humidity_high,humidity_normal,windy_False,windy_True]])
-        model = st.selectbox('Pilih Model', ['GaussianNB', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
-        if model == 'GaussianNB':
-            y_imp = clf.predict(data)
-        elif model == 'KNeighborsClassifier':
-            y_imp = knn.predict(data)
-        else:
-            y_imp = classifier.predict(data)
-        st.success(f'Model yang dipilih = {model}')
-        st.success(f'Data Predict = {y_imp}')
+            data = np.array([[temp_cool,temp_hot,temp_mild,outlook_overcast,outlook_rainy,outlook_sunny,humidity_high,humidity_normal,windy_False,windy_True]])
+            model = st.selectbox('Pilih Model', ['GaussianNB', 'KNeighborsClassifier', 'DecisionTreeClassifier'])
+            if model == 'GaussianNB':
+                y_imp = clf.predict(data)
+            elif model == 'KNeighborsClassifier':
+                y_imp = knn.predict(data)
+            else:
+                y_imp = classifier.predict(data)
+            st.success(f'Model yang dipilih = {model}')
+            st.success(f'Data Predict = {y_imp}')
    
             
