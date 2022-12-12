@@ -90,7 +90,7 @@ with dataframe:
         y = dt_dum['play']
         # split data
         X_train, X_test, y_train, y_test = train_test_split(
-        X, y, train_size=0.4,random_state=1)
+        X, y, train_size=0.5,random_state=1)
         clf, knc, dtc = st.tabs(
         ["GaussianNB", "KNeighborsClassifier", "DecisionTreeClassifier"])
         with clf:
