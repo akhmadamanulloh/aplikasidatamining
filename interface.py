@@ -19,10 +19,34 @@ from sklearn.naive_bayes import GaussianNB
 st.set_page_config(page_title="weather play tennis")
 
 st.title("UAS PENDAT")
-st.write("By: Akhmad Amanulloh (20041110099)")
-dataframe, preporcessing, modeling, implementation = st.tabs(
-    ["Data", "Prepocessing", "Modeling", "Implementation"])
-
+deskripsi,dataframe, preporcessing, modeling, implementation = st.tabs(
+    ["Deskripsi","Data", "Prepocessing", "Modeling", "Implementation"])
+with deskripsi:
+    st.subheader("Deskripsi")
+    st.write("Nama : Akhmad Amanulloh | NIM : 200411100099 | Kelas : Penambangan Data A")
+    st.write("")
+    st.write("Dataset berisi tentang cuaca yang tepat untuk bermain tennis.")
+    st.write("Aplikasi ini digunakan untuk cuaca yang tepat untuk bermain tennis.")
+    st.write("Fitur yang digunakan :")
+    st.write("1. Outlook (Pandangan) : Kategorikal")
+    st.write("sunny=cerah")
+    st.write("overcast=mendung")
+    st.write("rainy=hujan")
+    st.write("2. temp (suhu) : Kategorikal")
+    st.write("hoot=panas")
+    st.write("mild=normal")
+    st.write("cool=dingin")
+    st.write("3. humidity (kelembapan) : Kategorikal")
+    st.write("high=tinggi")
+    st.write("normal=normal")
+    st.write("4. windy (berangin) : boolean")
+    st.write("true=benar")
+    st.write("false=salah")
+    st.write("5. play (main) : boolean")
+    st.write("yes=iya")
+    st.write("no=tidak")
+    st.write("Sumber dataset https://www.kaggle.com/datasets/pranavpandey2511/tennis-weather")
+    st.write("Link github https://github.com/akhmadamanulloh/aplikasidatamining/")
 with dataframe:
     url = "https://www.kaggle.com/datasets/pranavpandey2511/tennis-weather"
     st.markdown(
@@ -41,9 +65,26 @@ with dataframe:
                     """)
         with preporcessingg:
             st.subheader("Preprocessing")
-            dt['outlook'].unique()
+            #Mendefinisikan Varible X dan Y
             dt_dum=pd.get_dummies(data=dt,columns=['temp','outlook','humidity','windy'])
             dt_dum
+            X = dt_dum.drop(columns=['play'])
+            y = dt_dum['play'].values
+            dt_min = X.min()
+            dt_max = X.max()
+
+            #NORMALISASI NILAI X
+            scaler = MinMaxScaler()
+            scaled = scaler.fit_transform(X)
+            features_names = X.columns.copy()
+            scaled_features = pd.DataFrame(scaled, columns=features_names)
+
+            st.subheader('Hasil Normalisasi Data')
+            st.write(scaled_features)
+
+            st.subheader('Target Label')
+            dumies = pd.get_dummies(dt.play).columns.values.tolist()
+            dumies 
     with modeling:
         X = dt_dum.drop('play',axis=1)
         y = dt_dum['play']
